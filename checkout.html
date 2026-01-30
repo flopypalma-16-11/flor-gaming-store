@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasarela de Pago Segura</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .payment-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+        h1 { color: #333; margin-bottom: 10px; }
+        .total-amount {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #6d28d9;
+            margin: 20px 0;
+        }
+        .input-group { text-align: left; margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; color: #666; font-size: 0.9rem; }
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box; /* Para que el padding no rompa el ancho */
+        }
+        button {
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 20px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        button:hover { background: #059669; }
+        .secure-icon { color: #10b981; font-size: 3rem; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="payment-card">
+        <div class="secure-icon">🔒</div>
+        <h1>Pago Seguro</h1>
+        <p>Estás a un paso de conseguir tus juegos.</p>
+        
+        <div class="total-amount" id="display-total">0.00€</div>
+
+        <div class="input-group">
+            <label>Número de Tarjeta (Simulado)</label>
+            <input type="text" placeholder="**** **** **** 4242" disabled>
+        </div>
+        
+        <div style="display: flex; gap: 10px;">
+            <div class="input-group">
+                <label>Fecha</label>
+                <input type="text" placeholder="MM/YY" disabled>
+            </div>
+            <div class="input-group">
+                <label>CVC</label>
+                <input type="text" placeholder="123" disabled>
+            </div>
+        </div>
+
+        <button onclick="finishPayment()">Pagar Ahora</button>
+    </div>
+
+    <script>
+        // 1. LEER EL PRECIO DE LA URL
+        // Buscamos si en la dirección web dice algo como "?total=45.99"
+        const params = new URLSearchParams(window.location.search);
+        const total = params.get('total');
+
+        // 2. PINTARLO EN LA PANTALLA
+        if(total) {
+            document.getElementById('display-total').innerText = total + "€";
+        }
+
+        // 3. SIMULAR EL PAGO
+        function finishPayment() {
+            const btn = document.querySelector('button');
+            btn.innerText = "Procesando pago...";
+            btn.style.background = "#ccc";
+            
+            setTimeout(() => {
+                alert("¡Pago realizado con éxito! Gracias por tu compra 🎮");
+                window.location.href = "index.html"; // Volvemos a la tienda
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
