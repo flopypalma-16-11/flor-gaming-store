@@ -29,10 +29,5 @@ Este proyecto ha sido construido desde cero (Vanilla JS) para entender los funda
 
 ---
 
-## 📸 Capturas
 
-(Aquí aparecerá tu web cuando entres al enlace de arriba)
-
----
-
-Hecho con 💜 por **Maria Florencia** mientras aprendía Desarrollo Web.
+Hecho con 💜 por ** Florencia** mientras aprendía Desarrollo Web.
